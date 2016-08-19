@@ -1,0 +1,52 @@
+<?php include ROOT . '/views/layouts/header.phtml'; ?>
+<div class="container">
+
+
+    <?php if (User::isGuest()): ?>
+        <h6 style="color: red">Зарегистрируйтесь если хотите оставить комментарий</h6>
+    <?php else: ?>
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+            <br><h3 class="heading">Коментарии <?=$getCountComments?></h3>
+
+
+                <?php foreach ($getCountCommentsPage  as  $comments):?>
+                    <li style="list-style-type: none;" class="comment even thread-even depth-1" id="li-comment-1">
+                        <div id="comment-1" class="comment-body clearfix">
+                            <img alt='' src='/template/images/<?=$comments['id']?>.jpg' height='50' width='50' />
+                            <div class="comment-author vcard"><?=$comments['name']?></div>
+                            <div class="comment-meta commentmetadata">
+                                <span class="comment-date"></span>
+                            </div>
+                            <div class="comment-inner">
+                                <p><?=$comments['description']?></p>
+                            </div>
+                            <p class="blog-post-meta"><a href="/date/<?=$comments['date']?>"><?=$comments['date']?></a> <br><a href="/name/<?=$comments['user_id']?>"><?=$comments['user_name']?></a> <br><a href="/email/<?=$comments['user_id']?>"><?=$comments['email']?></a></p><br>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+                <div>
+                    <a  href="#"></a><?php echo $pagination->get();?>
+                </div>
+
+        </div>
+        <div class="col-sm-8 blog-main">
+            <form action="" method="post" enctype="multipart/form-data">
+                <p class="heading">Оставьте коментарий</p>
+                <input class="form-control" type="text" name="name" id="author" tabindex="1" /><br/>
+
+                <textarea class="form-control" name="description" id="comment"  tabindex="4"></textarea><br/>
+
+                <input class="form-control" type="file" name="photo" value=""><br/>
+
+                <input class="btn btn-lg btn-primary btn-block" name="submit" type="submit" >
+
+            </form>
+        </div>
+
+
+    </div><!-- /.row -->
+    <?php endif ?>
+</div><!-- /.container -->
+<?php include ROOT . '/views/layouts/footer.phtml'; ?>
+

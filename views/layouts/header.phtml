@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="http://getbootstrap.com/assets/css/ie10-viewport-bug-workaround.css">
+    <link rel="stylesheet" href="http://getbootstrap.com/examples/blog/blog.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
+</head>
+
+<body>
+<nav class="container">
+    <ul style="list-style-type: none;" id="nav" class="sf-menu">
+        <?php if (User::isGuest()): ?>
+            <li style="display: inline"><a href="/user/register/">Регистрация</a></li>
+            <li style="display: inline"><a href="/user/login/">Вход</a></li>
+        <?php else: ?>
+            <li style="display: inline"><a href="/cabinet/">Аккаунт </a></li>
+            <li style="display: inline"><a href="/user/logout/">Выход</a></li>
+        <?php endif ?>
+    </ul>
+    <div id="combo-holder"></div>
+
+</nav>
+<div class="blog-masthead">
+    <div class="container">
+        <nav class="blog-nav">
+            <a class="blog-nav-item active" href="/">Главная</a>
+
+        </nav>
+    </div>
+</div>
